@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacter l'utilisateur {{ to_user.email }}{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
+    <p>Informations complètes de cet utilisateur:</p>
+    {{ to_user.id }}
+    {% endif %}
+{% endblock %}
