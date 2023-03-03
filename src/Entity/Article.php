@@ -19,6 +19,12 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $content;
 
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    private ?user $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'article')]
+    private ?Comments $article = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,4 +53,29 @@ class Article
 
         return $this;
     }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Comments
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Comments $article): self
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
 }
